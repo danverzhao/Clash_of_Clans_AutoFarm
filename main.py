@@ -73,10 +73,23 @@ def show_live_screen(capture_interval: float = 1.0):
 
     program_start = time.time()
     times_up = False
-    if len(sys.argv) > 1:
+
+    if len(sys.argv) == 5:
         max_run_time = int(sys.argv[1])
+        gold_min = int(sys.argv[2]) * 100000
+        elixir_min = int(sys.argv[3]) * 100000
+        dark_elixir_min = int(sys.argv[4]) * 1000
     else:
         max_run_time = int(input("Max run time in minutes: "))
+        gold_min = int(input("Min gold per raid in 100,000: ")) * 100000
+        elixir_min = int(input("Min elixir per raid in 100,000: ")) * 100000
+        dark_elixir_min = int(input("Min dark elixir per raid in 1,000: ")) * 1000
+    
+    print(f'''Default minimum resources required:
+    gold: {gold_min}
+    elixir: {elixir_min}
+    dark elixir: {dark_elixir_min}
+    ''')
 
     with mss.MSS() as sct:
         monitor = sct.monitors[1]
