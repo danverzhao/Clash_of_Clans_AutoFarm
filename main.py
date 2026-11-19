@@ -297,6 +297,10 @@ def show_live_screen(capture_interval: float = 1.0):
                     time.sleep(0.1)
                     click_at(right[0], right[1], clicks=8)                 
 
+                    # Click faster forward x4
+                    click_at(3075, 1255, clicks=2)
+
+
                     attack_done = True
                     
                 
